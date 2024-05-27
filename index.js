@@ -2,11 +2,15 @@
 const express = require("express");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const fs = require("fs");
+const dotenv = require('dotenv');
+
+dotenv.config(); // 放在最上方
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const uri =
-  "mongodb+srv://turtle910407:apple910407@cluster0.a7gll0c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri =process.env.uri;
+
+
 
 const client = new MongoClient(uri, {
   serverApi: {
