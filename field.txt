@@ -1,0 +1,262 @@
+//     {
+//         "nationalPhoneNumber": "04 887 0936",
+//         "internationalPhoneNumber": "+886 4 887 0936",
+//         "formattedAddress": "521台灣彰化縣北斗鎮舜耕路41-2號",
+//         "location": {
+//             "latitude": 23.8665858,
+//             "longitude": 120.51283559999999
+//         },
+//         "addressComponents": [
+//             {
+//                 "longText": "41-2號",
+//                 "shortText": "41-2號",
+//                 "types": [
+//                     "street_number"
+//                 ],
+//                 "languageCode": "zh-TW"
+//             },
+//             {
+//                 "longText": "舜耕路",
+//                 "shortText": "舜耕路",
+//                 "types": [
+//                     "route"
+//                 ],
+//                 "languageCode": "zh-TW"
+//             },
+//             {
+//                 "longText": "西德里",
+//                 "shortText": "西德里",
+//                 "types": [
+//                     "administrative_area_level_3",
+//                     "political"
+//                 ],
+//                 "languageCode": "zh-TW"
+//             },
+//             {
+//                 "longText": "北斗鎮",
+//                 "shortText": "北斗鎮",
+//                 "types": [
+//                     "administrative_area_level_2",
+//                     "political"
+//                 ],
+//                 "languageCode": "zh-TW"
+//             },
+//             {
+//                 "longText": "彰化縣",
+//                 "shortText": "彰化縣",
+//                 "types": [
+//                     "administrative_area_level_1",
+//                     "political"
+//                 ],
+//                 "languageCode": "zh-TW"
+//             },
+//             {
+//                 "longText": "台灣",
+//                 "shortText": "TW",
+//                 "types": [
+//                     "country",
+//                     "political"
+//                 ],
+//                 "languageCode": "zh-TW"
+//             },
+//             {
+//                 "longText": "521",
+//                 "shortText": "521",
+//                 "types": [
+//                     "postal_code"
+//                 ],
+//                 "languageCode": "zh-TW"
+//             }
+//         ],
+//         "regularOpeningHours": {
+//             "openNow": false,
+//             "periods": [
+//                 {
+//                     "open": {
+//                         "day": 1,
+//                         "hour": 7,
+//                         "minute": 30
+//                     },
+//                     "close": {
+//                         "day": 1,
+//                         "hour": 17,
+//                         "minute": 30
+//                     }
+//                 },
+//                 {
+//                     "open": {
+//                         "day": 2,
+//                         "hour": 7,
+//                         "minute": 30
+//                     },
+//                     "close": {
+//                         "day": 2,
+//                         "hour": 17,
+//                         "minute": 30
+//                     }
+//                 },
+//                 {
+//                     "open": {
+//                         "day": 3,
+//                         "hour": 7,
+//                         "minute": 30
+//                     },
+//                     "close": {
+//                         "day": 3,
+//                         "hour": 17,
+//                         "minute": 30
+//                     }
+//                 },
+//                 {
+//                     "open": {
+//                         "day": 4,
+//                         "hour": 7,
+//                         "minute": 30
+//                     },
+//                     "close": {
+//                         "day": 4,
+//                         "hour": 17,
+//                         "minute": 30
+//                     }
+//                 },
+//                 {
+//                     "open": {
+//                         "day": 5,
+//                         "hour": 7,
+//                         "minute": 30
+//                     },
+//                     "close": {
+//                         "day": 5,
+//                         "hour": 17,
+//                         "minute": 30
+//                     }
+//                 }
+//             ],
+//             "weekdayDescriptions": [
+//                 "星期一: 07:30 – 17:30",
+//                 "星期二: 07:30 – 17:30",
+//                 "星期三: 07:30 – 17:30",
+//                 "星期四: 07:30 – 17:30",
+//                 "星期五: 07:30 – 17:30",
+//                 "星期六: 休息",
+//                 "星期日: 休息"
+//             ]
+//         },
+//         "adrFormatAddress": "\u003cspan class=\"postal-code\"\u003e521\u003c/span\u003e\u003cspan class=\"country-name\"\u003e台灣\u003c/span\u003e\u003cspan class=\"region\"\u003e彰化縣\u003c/span\u003e\u003cspan class=\"locality\"\u003e北斗鎮\u003c/span\u003e\u003cspan class=\"street-address\"\u003e西德里舜耕路41-2號\u003c/span\u003e",
+//         "displayName": {
+//             "text": "正大資源回收場",
+//             "languageCode": "zh-TW"
+//         },
+//         "photos": [
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZmf1PuDqXmAFFDHUXaotsWlwgOoY15VCLg5EnVsQ13n-31tBH-galmBPPTmjF75pipuOKwibDkF4Rb_KNy3Cha3LCFB1ARty9Nr3Qwl8XvR1DDo4C2CEFnVH3v33WxdSBebF0B8QT75-HaJy-pqpa0u7VRvoLKNxqL0",
+//                 "widthPx": 3096,
+//                 "heightPx": 4128,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "陳志明",
+//                         "uri": "//maps.google.com/maps/contrib/108046375916896596153",
+//                         "photoUri": "//lh3.googleusercontent.com/a/ACg8ocJ95DCyx6lBAGL1wLDBwTeGDZ6xwPYTQq1rBK1c9S-zKmJZZg=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZmMYjbc1M3IXIQ-sMg3pbnUJvhk28qAZYJ_zze8DCLLnaTsGdlswy5Aol77f8rPdASG1rUWOaZNYFCbljUbvCB0Hb18UQF8yOBTQ44xRvLnUOkf7hYi_frkpo9SN8oTovD-uOeuzo76ivKz6fSKXdcS8mv0mOXbIro1",
+//                 "widthPx": 3024,
+//                 "heightPx": 4032,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "令令",
+//                         "uri": "//maps.google.com/maps/contrib/106682411352745809483",
+//                         "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjXPOADv4j0PTqJIEmHXBFvuA0wyWAgWDzTY-DpRhKwhGmqlzOi7=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZk5nOP5zm6A8Zhkidr5eY2wYBHkmf0DF0xl2WwRmHt_aldBmkF1eX-OwYQepnJE3q4avENdI1Sa7SN0SDMxWp1RxRoULSc84OJPbJ5QQdcwuKWRFx1JdhhYo_qvNL8RBaTH8Z2L6fQJ4_61_eR9nVZyQpPzMCVX_jAb",
+//                 "widthPx": 3000,
+//                 "heightPx": 4000,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "令令",
+//                         "uri": "//maps.google.com/maps/contrib/114715562372396641628",
+//                         "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjWtigDi8nIFdSzmYqaKvQkjS7Occ7zsJSZ3dMG2lcbFHBogrpXg=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZk6yto9jJU1Q_NgETyk12u5Lse_NjnFklLWJfpHCV_BeD4oLqhz1t2IY1rcsUE4E3IyJ8d-Od5bILZskwYzMHN5oML0qHejEJOrrBbUdK0aTpjLnSc8AbNZdC_nKVOjw2Dqmc8O3oVLA2MF6ivRSHzA9zq8N42EgPeD",
+//                 "widthPx": 2304,
+//                 "heightPx": 4096,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "令令",
+//                         "uri": "//maps.google.com/maps/contrib/106682411352745809483",
+//                         "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjXPOADv4j0PTqJIEmHXBFvuA0wyWAgWDzTY-DpRhKwhGmqlzOi7=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZnqOqJa7z1n8hyS6trJD6Y_NqdvTAiqx6GhlDa_kM-U9aJDcL508WP-eIoE9t_B02mVqz2RxhP41ODOpiC41gB8twhvXGtlJem_hn6-Tu2_boNp4gUquubwfcPR0xFQjQCaXbKqHsaLSAVz9o9a-vHeYGVYvWeQU3jT",
+//                 "widthPx": 3024,
+//                 "heightPx": 4032,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "許家銘",
+//                         "uri": "//maps.google.com/maps/contrib/105703937709244323132",
+//                         "photoUri": "//lh3.googleusercontent.com/a/ACg8ocIXXDkZXCKHaQHk9myEhWsRBvkfH9IbsTEptsmMpVDfe6r_JA=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZnpjsCJhApxZ4762smdlTQJ10Q_2UCALndBH9KDxlotDJS96mU1YCIirghQULqX_4K-JmH2hfZfg36yXrVsqA28fPc5meQgqKezUW2IxrMfsZ7JQYSOJjLFmQBp6iDiHwhNEHIx6RPPqYWaE92jXMQ1IPq0ifnjR4i0",
+//                 "widthPx": 1108,
+//                 "heightPx": 1477,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "令令",
+//                         "uri": "//maps.google.com/maps/contrib/106682411352745809483",
+//                         "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjXPOADv4j0PTqJIEmHXBFvuA0wyWAgWDzTY-DpRhKwhGmqlzOi7=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZmbsp9lJ6pjWCnrGX8wKuaIypqcMUK5XZpKTOkESellznYM80BwU6OIchA5E2BPmxwRGqqcr_GCZ3kx5PSPQQsIiN_0cTEOc7tYNQns868WZs4m7vscHcQphZu2mOAdM3juVuMNWhsdvN3WD9mHQ40LjiRHjY_OFLZH",
+//                 "widthPx": 2304,
+//                 "heightPx": 4096,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "令令",
+//                         "uri": "//maps.google.com/maps/contrib/106682411352745809483",
+//                         "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjXPOADv4j0PTqJIEmHXBFvuA0wyWAgWDzTY-DpRhKwhGmqlzOi7=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZnTcZzpfNZigHweq3tLhUZ-11_xhPzHNcfot7YU-F7H3hJcLykMyAMXSMPX_IRTh8Ov3bUXrxLCIe9lDn9m0u8_QbRPSYxaKHeutDjpelGeiypBDgIuO6n6_X7DHhkCq8Yfz7bxMMAsG9PLdUNGIdthP3yzRTB82drw",
+//                 "widthPx": 3000,
+//                 "heightPx": 4000,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "令令",
+//                         "uri": "//maps.google.com/maps/contrib/114715562372396641628",
+//                         "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjWtigDi8nIFdSzmYqaKvQkjS7Occ7zsJSZ3dMG2lcbFHBogrpXg=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             },
+//             {
+//                 "name": "places/ChIJvxsgO2VLaTQRoaXFR6oqRbc/photos/AUGGfZno2zJfTn_VNT6GfSl-7PbCBEQPcjskp7hB8k-z9AVfDw-K2GWVZh1tcGPcIuKOV8d8NX2QDKlJjPtKhBpw_yRo3zXXFPk1gCMoxsen2o3AX3lJLU2XL21JwkJjkeNBc-5qkgPiucIXQvFV8j4BEcMoixjStwS2IAC_",
+//                 "widthPx": 960,
+//                 "heightPx": 1706,
+//                 "authorAttributions": [
+//                     {
+//                         "displayName": "陳怡惠",
+//                         "uri": "//maps.google.com/maps/contrib/116996360632276740150",
+//                         "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjUc7wM2Non1vJKd_tmzDW2srgmFG5W92oq66KWlswryTU9MEsxx=s100-p-k-no-mo"
+//                     }
+//                 ]
+//             }
+//         ]
+//     }
+
+// places.nationalPhoneNumber,places.internationalPhoneNumber,places.formattedAddress,places.location,places.addressComponents,places.regularOpeningHours,places.adrFormatAddress,places.displayName,places.photos
