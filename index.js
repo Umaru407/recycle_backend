@@ -23,8 +23,10 @@ const client = new MongoClient(uri, {
 });
 
 app.use(express.json());
-// 使用 cors 中間件
-app.use(cors());
+// 使用 cors 中間件，並設置 Access-Control-Allow-Origin 為通配符 (*)
+app.use(cors({
+    origin: '*'
+  }));
 
 app.get("/api/name/:name", async (req, res) => {
   const client = new MongoClient(uri);
