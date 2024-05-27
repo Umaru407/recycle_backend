@@ -3,6 +3,8 @@ const express = require("express");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const fs = require("fs");
 const dotenv = require('dotenv');
+const cors = require('cors');
+
 
 dotenv.config(); // 放在最上方
 
@@ -21,6 +23,8 @@ const client = new MongoClient(uri, {
 });
 
 app.use(express.json());
+// 使用 cors 中間件
+app.use(cors());
 
 app.get("/api/name/:name", async (req, res) => {
   const client = new MongoClient(uri);
