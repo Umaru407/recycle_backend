@@ -10,7 +10,7 @@ const config = {
     // Authorization: `Bearer ${accessToken}`,
     Accept: "application/json",
     "Content-Type": "application/json",
-    "X-Goog-Api-Key": YOUR_API_KEY,
+    "X-Goog-Api-Key": process.env.YOUR_API_KEY,
     "X-Goog-FieldMask":
       "places.nationalPhoneNumber,places.internationalPhoneNumber,places.formattedAddress,places.location,places.addressComponents,places.regularOpeningHours,places.adrFormatAddress,places.displayName,places.photos",
   },

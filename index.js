@@ -2,17 +2,14 @@
 const express = require("express");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const fs = require("fs");
-const dotenv = require('dotenv');
-const cors = require('cors');
-
+const dotenv = require("dotenv");
+const cors = require("cors");
 
 dotenv.config(); // 放在最上方
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const uri =process.env.uri;
-
-
+const uri = process.env.uri;
 
 const client = new MongoClient(uri, {
   serverApi: {
@@ -24,9 +21,11 @@ const client = new MongoClient(uri, {
 
 app.use(express.json());
 // 使用 cors 中間件，並設置 Access-Control-Allow-Origin 為通配符 (*)
-app.use(cors({
-    origin: '*'
-  }));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.get("/api/name/:name", async (req, res) => {
   const client = new MongoClient(uri);
@@ -74,6 +73,38 @@ app.get("/api/address/:location", async (req, res) => {
       res.json(result);
     } else {
       res.status(404).json({ message: "Location not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  } finally {
+    await client.close();
+  }
+});
+
+app.get("/api/categories/:categories", async (req, res) => {
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+    const database = client.db("recycle");
+    const collection = database.collection("place_detail");
+
+    const { categories } = req.params;
+    const categoriesArray = categories.split(",");
+
+    const result = await collection
+      .find({
+        category: { $in: categoriesArray },
+      })
+      .toArray();
+
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res
+        .status(404)
+        .json({ message: "Addresses not found for the given categories" });
     }
   } catch (error) {
     console.error(error);

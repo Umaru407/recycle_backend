@@ -1,0 +1,492 @@
+{
+    "places": [
+      {
+        "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4",
+        "id": "ChIJRfPYyPAZaTQRIsjRfxSEBV4",
+        "types": [
+          "point_of_interest",
+          "establishment"
+        ],
+        "nationalPhoneNumber": "04 2539 5093",
+        "internationalPhoneNumber": "+886 4 2539 5093",
+        "formattedAddress": "420台灣台中市豐原區鎌村路79號",
+        "addressComponents": [
+          {
+            "longText": "79號",
+            "shortText": "79號",
+            "types": [
+              "street_number"
+            ],
+            "languageCode": "zh-TW"
+          },
+          {
+            "longText": "鎌村路",
+            "shortText": "鎌村路",
+            "types": [
+              "route"
+            ],
+            "languageCode": "zh-TW"
+          },
+          {
+            "longText": "鎌村里",
+            "shortText": "鎌村里",
+            "types": [
+              "administrative_area_level_3",
+              "political"
+            ],
+            "languageCode": "zh-TW"
+          },
+          {
+            "longText": "豐原區",
+            "shortText": "豐原區",
+            "types": [
+              "administrative_area_level_2",
+              "political"
+            ],
+            "languageCode": "zh-TW"
+          },
+          {
+            "longText": "台中市",
+            "shortText": "台中市",
+            "types": [
+              "administrative_area_level_1",
+              "political"
+            ],
+            "languageCode": "zh-TW"
+          },
+          {
+            "longText": "台灣",
+            "shortText": "TW",
+            "types": [
+              "country",
+              "political"
+            ],
+            "languageCode": "zh-TW"
+          },
+          {
+            "longText": "420",
+            "shortText": "420",
+            "types": [
+              "postal_code"
+            ],
+            "languageCode": "zh-TW"
+          }
+        ],
+        "plusCode": {
+          "globalCode": "7QP26PMG+84",
+          "compoundCode": "6PMG+84 台灣台中市豐原區鎌村里"
+        },
+        "location": {
+          "latitude": 24.233305899999998,
+          "longitude": 120.72526710000001
+        },
+        "viewport": {
+          "low": {
+            "latitude": 24.231978719708497,
+            "longitude": 120.72387876970849
+          },
+          "high": {
+            "latitude": 24.2346766802915,
+            "longitude": 120.72657673029148
+          }
+        },
+        "rating": 4.4,
+        "googleMapsUri": "https://maps.google.com/?cid=6774966438027446306",
+        "regularOpeningHours": {
+          "openNow": false,
+          "periods": [
+            {
+              "open": {
+                "day": 1,
+                "hour": 8,
+                "minute": 0
+              },
+              "close": {
+                "day": 1,
+                "hour": 17,
+                "minute": 0
+              }
+            },
+            {
+              "open": {
+                "day": 2,
+                "hour": 8,
+                "minute": 0
+              },
+              "close": {
+                "day": 2,
+                "hour": 17,
+                "minute": 0
+              }
+            },
+            {
+              "open": {
+                "day": 3,
+                "hour": 8,
+                "minute": 0
+              },
+              "close": {
+                "day": 3,
+                "hour": 17,
+                "minute": 0
+              }
+            },
+            {
+              "open": {
+                "day": 4,
+                "hour": 8,
+                "minute": 0
+              },
+              "close": {
+                "day": 4,
+                "hour": 17,
+                "minute": 0
+              }
+            },
+            {
+              "open": {
+                "day": 5,
+                "hour": 8,
+                "minute": 0
+              },
+              "close": {
+                "day": 5,
+                "hour": 17,
+                "minute": 0
+              }
+            },
+            {
+              "open": {
+                "day": 6,
+                "hour": 8,
+                "minute": 0
+              },
+              "close": {
+                "day": 6,
+                "hour": 17,
+                "minute": 0
+              }
+            }
+          ],
+          "weekdayDescriptions": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 休息"
+          ]
+        },
+        "utcOffsetMinutes": 480,
+        "adrFormatAddress": "\u003cspan class=\"postal-code\"\u003e420\u003c/span\u003e\u003cspan class=\"country-name\"\u003e台灣\u003c/span\u003e\u003cspan class=\"region\"\u003e台中市\u003c/span\u003e\u003cspan class=\"locality\"\u003e豐原區\u003c/span\u003e\u003cspan class=\"street-address\"\u003e鎌村里鎌村路79號\u003c/span\u003e",
+        "businessStatus": "OPERATIONAL",
+        "userRatingCount": 43,
+        "iconMaskBaseUri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/generic_pinlet",
+        "iconBackgroundColor": "#7B9EB0",
+        "displayName": {
+          "text": "中華行",
+          "languageCode": "zh-TW"
+        },
+        "currentOpeningHours": {
+          "openNow": false,
+          "periods": [
+            {
+              "open": {
+                "day": 1,
+                "hour": 8,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 27
+                }
+              },
+              "close": {
+                "day": 1,
+                "hour": 17,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 27
+                }
+              }
+            },
+            {
+              "open": {
+                "day": 2,
+                "hour": 8,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 28
+                }
+              },
+              "close": {
+                "day": 2,
+                "hour": 17,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 28
+                }
+              }
+            },
+            {
+              "open": {
+                "day": 3,
+                "hour": 8,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 29
+                }
+              },
+              "close": {
+                "day": 3,
+                "hour": 17,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 29
+                }
+              }
+            },
+            {
+              "open": {
+                "day": 4,
+                "hour": 8,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 30
+                }
+              },
+              "close": {
+                "day": 4,
+                "hour": 17,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 30
+                }
+              }
+            },
+            {
+              "open": {
+                "day": 5,
+                "hour": 8,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 31
+                }
+              },
+              "close": {
+                "day": 5,
+                "hour": 17,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 5,
+                  "day": 31
+                }
+              }
+            },
+            {
+              "open": {
+                "day": 6,
+                "hour": 8,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 6,
+                  "day": 1
+                }
+              },
+              "close": {
+                "day": 6,
+                "hour": 17,
+                "minute": 0,
+                "date": {
+                  "year": 2024,
+                  "month": 6,
+                  "day": 1
+                }
+              }
+            }
+          ],
+          "weekdayDescriptions": [
+            "星期一: 08:00 – 17:00",
+            "星期二: 08:00 – 17:00",
+            "星期三: 08:00 – 17:00",
+            "星期四: 08:00 – 17:00",
+            "星期五: 08:00 – 17:00",
+            "星期六: 08:00 – 17:00",
+            "星期日: 休息"
+          ]
+        },
+        "shortFormattedAddress": "鎌村路79號",
+        "reviews": [
+          {
+            "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4/reviews/ChZDSUhNMG9nS0VJQ0FnSUQ5OGYzMEtREAE",
+            "relativePublishTimeDescription": "2 個月前",
+            "rating": 5,
+            "text": {
+              "text": "中古零件又便宜老闆又實在不會亂報價",
+              "languageCode": "zh-Hant"
+            },
+            "originalText": {
+              "text": "中古零件又便宜老闆又實在不會亂報價",
+              "languageCode": "zh-Hant"
+            },
+            "authorAttribution": {
+              "displayName": "程建忠",
+              "uri": "https://www.google.com/maps/contrib/101134071510771928376/reviews",
+              "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocL-ViD6q-1EygUE_a1_w5iqdmXwFiz-BnIjbo9wlXct3OpRxw=s128-c0x00000000-cc-rp-mo"
+            },
+            "publishTime": "2024-03-18T04:42:08Z"
+          },
+          {
+            "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4/reviews/ChdDSUhNMG9nS0VJQ0FnSUQ5aXV6WXZBRRAB",
+            "relativePublishTimeDescription": "2 個月前",
+            "rating": 1,
+            "text": {
+              "text": "如果是去報廢汽車，回收價格偏低，真心不推這家",
+              "languageCode": "zh-Hant"
+            },
+            "originalText": {
+              "text": "如果是去報廢汽車，回收價格偏低，真心不推這家",
+              "languageCode": "zh-Hant"
+            },
+            "authorAttribution": {
+              "displayName": "Jet Lin",
+              "uri": "https://www.google.com/maps/contrib/100638037406680339881/reviews",
+              "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocJ4asUh-ilcHHoliLEJJ0qUeDbUAVAKh-nV_hPB1g7J5ngT_Mk=s128-c0x00000000-cc-rp-mo-ba5"
+            },
+            "publishTime": "2024-03-19T07:46:31Z"
+          },
+          {
+            "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4/reviews/ChdDSUhNMG9nS0VJQ0FnSUNHLUl1c3V3RRAB",
+            "relativePublishTimeDescription": "2 年前",
+            "rating": 5,
+            "text": {
+              "text": "小姐人很好很親切👍🏻老闆也是人很好👍🏻\n會很仔細告知客人注意的事項還有細節！\n要報廢車輛來這裡就對了😃",
+              "languageCode": "zh-Hant"
+            },
+            "originalText": {
+              "text": "小姐人很好很親切👍🏻老闆也是人很好👍🏻\n會很仔細告知客人注意的事項還有細節！\n要報廢車輛來這裡就對了😃",
+              "languageCode": "zh-Hant"
+            },
+            "authorAttribution": {
+              "displayName": "Ailasa",
+              "uri": "https://www.google.com/maps/contrib/100700476442692430373/reviews",
+              "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocK4gW86WZ9YlvBdCwna9loUJitoYN6GW20lanww9YUr3R1gEg=s128-c0x00000000-cc-rp-mo"
+            },
+            "publishTime": "2021-10-20T06:30:14Z"
+          },
+          {
+            "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4/reviews/ChZDSUhNMG9nS0VJQ0FnSUNKalBIZlJ3EAE",
+            "relativePublishTimeDescription": "11 個月前",
+            "rating": 3,
+            "text": {
+              "text": "俗稱的機車殺肉場，找零件來這裡就對了！",
+              "languageCode": "zh-Hant"
+            },
+            "originalText": {
+              "text": "俗稱的機車殺肉場，找零件來這裡就對了！",
+              "languageCode": "zh-Hant"
+            },
+            "authorAttribution": {
+              "displayName": "alex chen",
+              "uri": "https://www.google.com/maps/contrib/108938676310268681030/reviews",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWAWq8XyeJ9eqDlcMiKdeCmQ7T4ilg36gqa_NFcDQizbepaq73t=s128-c0x00000000-cc-rp-mo-ba4"
+            },
+            "publishTime": "2023-06-22T05:33:18Z"
+          },
+          {
+            "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4/reviews/ChdDSUhNMG9nS0VJQ0FnSUN5NzdIa2t3RRAB",
+            "relativePublishTimeDescription": "3 年前",
+            "rating": 5,
+            "text": {
+              "text": "這裡的男人們，個個是暖男喔！善待貓兒群，待客又親切。",
+              "languageCode": "zh-Hant"
+            },
+            "originalText": {
+              "text": "這裡的男人們，個個是暖男喔！善待貓兒群，待客又親切。",
+              "languageCode": "zh-Hant"
+            },
+            "authorAttribution": {
+              "displayName": "SOFY T",
+              "uri": "https://www.google.com/maps/contrib/109150394594125979762/reviews",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUX9nQekNbPEGLt8zLs33sDVLS7KOMM9zBPEDE-RdX9ydDG80E=s128-c0x00000000-cc-rp-mo"
+            },
+            "publishTime": "2021-02-18T10:31:37Z"
+          }
+        ],
+        "photos": [
+          {
+            "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4/photos/AUGGfZmFEMtQ50zn_Ffxk0ZfMGYz_1BncUOpoCMlP9Z3FIvZNDKKjGNQWZCfSdx9ex8UJxjMiXaTblQt154OB_bf4UBVps-9mOhC5BUgPMw9ADm_QVnWwpTRU9Qfrp0KPgi3SEnMN-PHVs2Mqwmp_Thqc2O9uSv8gmCriE8d",
+            "widthPx": 2560,
+            "heightPx": 1920,
+            "authorAttributions": [
+              {
+                "displayName": "洪至誠",
+                "uri": "//maps.google.com/maps/contrib/112813773064949841406",
+                "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjUe32RBEUiUHpweuh2zWg2rEUywZnzC7Q9fHa32hPv7SEv6ilyuuw=s100-p-k-no-mo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "contextualContents": [
+      {
+        "reviews": [
+          {
+            "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4/reviews/ChdDSUhNMG9nS0VJQ0FnSUNHLUl1c3V3RRAB",
+            "relativePublishTimeDescription": "2 年前",
+            "rating": 5,
+            "text": {
+              "text": "小姐人很好很親切👍🏻老闆也是人很好👍🏻\n會很仔細告知客人注意的事項還有細節！\n要報廢車輛來這裡就對了😃",
+              "languageCode": "zh"
+            },
+            "originalText": {
+              "text": "小姐人很好很親切👍🏻老闆也是人很好👍🏻\n會很仔細告知客人注意的事項還有細節！\n要報廢車輛來這裡就對了😃",
+              "languageCode": "zh"
+            },
+            "authorAttribution": {
+              "displayName": "Ailasa",
+              "uri": "https://www.google.com/maps/contrib/100700476442692430373/reviews",
+              "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocK4gW86WZ9YlvBdCwna9loUJitoYN6GW20lanww9YUr3R1gEg=s128-c-c0x00000000-cc-rp-mo-ba2-br100"
+            },
+            "publishTime": "2021-10-20T06:30:14Z"
+          }
+        ],
+        "photos": [
+          {
+            "name": "places/ChIJRfPYyPAZaTQRIsjRfxSEBV4/photos/AUGGfZl3ng_r3Th_2mxAU_8KTXfTLBGjOxP2FyZGHq4gMBCkroz-9CMdwlXqZRmi01XNPPY0yGbvLHrIc9q1PHZaXNCZbQkwxo3gDLZ_Y2wKto_mGEEMv8aidua0ZpG-KKYWAX8dV5c5sG2yhi63VBPIa0CT2_acnFRBBiOx",
+            "widthPx": 2560,
+            "heightPx": 1920,
+            "authorAttributions": [
+              {
+                "displayName": "洪志誠",
+                "uri": "//maps.google.com/maps/contrib/112813773064949841406",
+                "photoUri": "//lh3.googleusercontent.com/a-/ALV-UjUe32RBEUiUHpweuh2zWg2rEUywZnzC7Q9fHa32hPv7SEv6ilyuuw=s100-p-k-no-mo"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "nextPageToken": "AUGGfZlwZjMCHdkqCwd_4pdwkSvuDDuwTeXo3FOW84eLJoKuf6bXF7E18mufSKLSKiSe1g2ALoLJ3sS2k8Dvq2NcOGeXEtD8DLVaae1mY82U7phz7Q"
+  }
+  
