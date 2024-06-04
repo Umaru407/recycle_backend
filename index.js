@@ -86,6 +86,201 @@ app.get("/api/address/:location", async (req, res) => {
   }
 });
 
+
+app.get("/api/opening-weekday", async (req, res) => {
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+    const database = client.db("recycle");
+    const collection = database.collection("place_detail");
+
+    const { days } = req.query;
+
+    if (!days) {
+      return res.status(400).json({ message: "Days parameter is required" });
+    }
+
+    const dayNumbers = days.split(',').map(day => parseInt(day)).filter(day => !isNaN(day) && day >= 0 && day <= 6);
+
+
+    console.log(dayNumbers);
+    if (dayNumbers.length === 0) {
+      return res.status(400).json({ message: "Invalid days parameter" });
+    }
+
+    const query = {
+      'regularOpeningHours.periods': {
+        $elemMatch: {
+          'open.day': { $in: dayNumbers },
+          'close.day': { $in: dayNumbers }
+        }
+      }
+    };
+
+    const result = await collection.find(query).toArray();
+
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.status(404).json({ message: "No opening hours found for the given days" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  } finally {
+    await client.close();
+  }
+});
+
+
+// app.get("/api/opening-weekday/:day", async (req, res) => {
+//   const client = new MongoClient(uri);
+
+//   try {
+//     await client.connect();
+//     const database = client.db("recycle");
+//     const collection = database.collection("place_detail");
+
+//     const { day } = req.params;
+//     const dayNumber = parseInt(day);
+
+//     if (isNaN(dayNumber) || dayNumber < 0 || dayNumber > 6) {
+//       return res.status(400).json({ message: "Invalid day parameter" });
+//     }
+
+//     const query = {
+//       'regularOpeningHours.periods': {
+//         $elemMatch: {
+//           'open.day': dayNumber,
+//           'close.day': dayNumber
+//         }
+//       }
+//     };
+
+//     const result = await collection.find(query).toArray();
+
+//     if (result.length > 0) {
+//       res.json(result);
+//     } else {
+//       res.status(404).json({ message: "No opening hours found for the given day" });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Internal Server Error" });
+//   } finally {
+//     await client.close();
+//   }
+// });
+
+app.get("/api/search", async (req, res) => {
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+    const database = client.db("recycle");
+    const collection = database.collection("place_detail");
+
+    const { location, weekdays ,categories } = req.query;
+
+    const query = {};
+
+    if (location) {
+      query.$or = [
+        { "addressComponents.longText": location },
+        { "addressComponents.longText": { $regex: `${location}\\(` } }
+      ];
+    }
+
+    if (weekdays) {
+      const dayNumbers = weekdays.split(',').map(day => parseInt(day)).filter(day => !isNaN(day) && day >= 0 && day <= 6);
+
+      if (dayNumbers.length === 0) {
+        return res.status(400).json({ message: "Invalid days parameter" });
+      }
+
+      query['regularOpeningHours.periods'] = {
+        $elemMatch: {
+          'open.day': { $in: dayNumbers },
+          'close.day': { $in: dayNumbers }
+        }
+      };
+    }
+
+    if (categories) {
+      const categoriesArray = categories.split(',');
+      query.category = { $in: categoriesArray };
+    }
+
+
+    const result = await collection.find(query).toArray();
+
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.status(404).json({ message: "No matching data found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  } finally {
+    await client.close();
+  }
+});
+
+// app.get("/api/search", async (req, res) => {
+//   const client = new MongoClient(uri);
+
+//   try {
+//     await client.connect();
+//     const database = client.db("recycle");
+//     const collection = database.collection("place_detail");
+
+//     const { location, weekday } = req.query;
+
+//     const query = {};
+
+//     if (location) {
+//       query.$or = [
+//         { "addressComponents.longText": location },
+//         { "addressComponents.longText": { $regex: `${location}\\(` } }
+//       ];
+//     }
+
+//     if (weekday) {
+//       const dayNumber = parseInt(weekday);
+//       if (isNaN(dayNumber) || dayNumber < 0 || dayNumber > 6) {
+//         return res.status(400).json({ message: "Invalid weekday parameter" });
+//       }
+//       query['regularOpeningHours.periods'] = {
+//         $elemMatch: {
+//           'open.day': dayNumber,
+//           'close.day': dayNumber
+//         }
+//       };
+//     }
+
+//     const result = await collection.find(query).toArray();
+
+//     if (result.length > 0) {
+//       res.json(result);
+//     } else {
+//       res.status(404).json({ message: "No matching data found" });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Internal Server Error" });
+//   } finally {
+//     await client.close();
+//   }
+// });
+
+
+
+
+
+
+
 app.get("/api/categories/:categories", async (req, res) => {
   const client = new MongoClient(uri);
 
@@ -118,44 +313,6 @@ app.get("/api/categories/:categories", async (req, res) => {
   }
 });
 
-app.get("/api/opening-weekday/:day", async (req, res) => {
-  const client = new MongoClient(uri);
-
-  try {
-    await client.connect();
-    const database = client.db("recycle");
-    const collection = database.collection("place_detail");
-
-    const { day } = req.params;
-    const dayNumber = parseInt(day);
-
-    if (isNaN(dayNumber) || dayNumber < 0 || dayNumber > 6) {
-      return res.status(400).json({ message: "Invalid day parameter" });
-    }
-
-    const query = {
-      'regularOpeningHours.periods': {
-        $elemMatch: {
-          'open.day': dayNumber,
-          'close.day': dayNumber
-        }
-      }
-    };
-
-    const result = await collection.find(query).toArray();
-
-    if (result.length > 0) {
-      res.json(result);
-    } else {
-      res.status(404).json({ message: "No opening hours found for the given day" });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal Server Error" });
-  } finally {
-    await client.close();
-  }
-});
 
 
 app.post("/getClassify", upload.single("image"), async (req, res) => {
