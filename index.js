@@ -4,7 +4,9 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const fs = require("fs");
 const dotenv = require("dotenv");
 const cors = require("cors");
-
+const { generateContent } = require("./aitest");
+const multer = require('multer');
+const sharp = require("sharp");
 dotenv.config(); // 放在最上方
 
 const app = express();
@@ -26,6 +28,8 @@ app.use(
     origin: "*",
   })
 );
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 app.get("/api/name/:name", async (req, res) => {
   const client = new MongoClient(uri);
@@ -114,9 +118,68 @@ app.get("/api/categories/:categories", async (req, res) => {
   }
 });
 
+app.get("/api/opening-weekday/:day", async (req, res) => {
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+    const database = client.db("recycle");
+    const collection = database.collection("place_detail");
+
+    const { day } = req.params;
+    const dayNumber = parseInt(day);
+
+    if (isNaN(dayNumber) || dayNumber < 0 || dayNumber > 6) {
+      return res.status(400).json({ message: "Invalid day parameter" });
+    }
+
+    const query = {
+      'regularOpeningHours.periods': {
+        $elemMatch: {
+          'open.day': dayNumber,
+          'close.day': dayNumber
+        }
+      }
+    };
+
+    const result = await collection.find(query).toArray();
+
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res.status(404).json({ message: "No opening hours found for the given day" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  } finally {
+    await client.close();
+  }
+});
+
+
+app.post("/getClassify", upload.single("image"), async (req, res) => {
+  try {
+    const imageBuffer = req.file.buffer;
+    const image = await resizeImage(imageBuffer);
+    const answer = await generateContent(image);
+    res.json({ result: answer });
+  } catch (error) {
+    res.status(500).send(`Error: ${error.message}`);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+async function resizeImage(imageBuffer) {
+  //   const imageBuffer = await fs.readFile(imagePath);
+  const resizedImageBuffer = await sharp(imageBuffer)
+    .resize(400) // 設定縮小圖片的寬度，保持縱橫比
+    .toBuffer();
+  return resizedImageBuffer.toString("base64");
+}
 
 // async function run() {
 //   try {
