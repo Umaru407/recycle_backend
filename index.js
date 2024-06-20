@@ -137,7 +137,7 @@ app.get("/api/search", async (req, res) => {
       if (categories) {
         const categoriesArray = categories.split(",");
         geoQuery.category = { $in: categoriesArray };
-      }Ｆ
+      }
 
       const result = await collection
         .find(geoQuery)
