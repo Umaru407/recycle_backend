@@ -5,12 +5,12 @@ const fs = require("fs");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const { generateContent } = require("./aitest");
-const multer = require('multer');
+const multer = require("multer");
 const sharp = require("sharp");
 dotenv.config(); // 放在最上方
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 const uri = process.env.uri;
 
 const client = new MongoClient(uri, {
@@ -37,7 +37,7 @@ app.get("/api/name/:name", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("recycle");
-    const collection = database.collection("place_detail");
+    const collection = database.collection("place_detail2");
 
     const { name } = req.params;
     const result = await collection.findOne({ factoryname: name });
@@ -61,7 +61,7 @@ app.get("/api/address/:location", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("recycle");
-    const collection = database.collection("place_detail");
+    const collection = database.collection("place_detail2");
 
     const { location } = req.params;
     const result = await collection
@@ -86,44 +86,103 @@ app.get("/api/address/:location", async (req, res) => {
   }
 });
 
-
-app.get("/api/opening-weekday", async (req, res) => {
+app.get("/api/search", async (req, res) => {
   const client = new MongoClient(uri);
 
   try {
     await client.connect();
     const database = client.db("recycle");
-    const collection = database.collection("place_detail");
+    const collection = database.collection("place_detail2");
 
-    const { days } = req.query;
+    const { location, weekdays, categories, latitude, longitude } = req.query;
 
-    if (!days) {
-      return res.status(400).json({ message: "Days parameter is required" });
-    }
+    const query = {};
 
-    const dayNumbers = days.split(',').map(day => parseInt(day)).filter(day => !isNaN(day) && day >= 0 && day <= 6);
+    // 經緯度查詢
+    if (latitude && longitude) {
+      const userLocation = {
+        latitude: parseFloat(latitude),
+        longitude: parseFloat(longitude),
+      };
 
+      const geoQuery = {
+        locationGeoJson: {
+          $near: {
+            $geometry: {
+              type: "Point",
+              coordinates: [userLocation.longitude, userLocation.latitude],
+            },
+          },
+        },
+      };
 
-    console.log(dayNumbers);
-    if (dayNumbers.length === 0) {
-      return res.status(400).json({ message: "Invalid days parameter" });
-    }
+      if (weekdays) {
+        const dayNumbers = weekdays
+          .split(",")
+          .map((day) => parseInt(day))
+          .filter((day) => !isNaN(day) && day >= 0 && day <= 6);
 
-    const query = {
-      'regularOpeningHours.periods': {
-        $elemMatch: {
-          'open.day': { $in: dayNumbers },
-          'close.day': { $in: dayNumbers }
+        if (dayNumbers.length === 0) {
+          return res.status(400).json({ message: "Invalid days parameter" });
         }
+
+        geoQuery["regularOpeningHours.periods"] = {
+          $elemMatch: {
+            "open.day": { $in: dayNumbers },
+            "close.day": { $in: dayNumbers },
+          },
+        };
       }
-    };
 
-    const result = await collection.find(query).toArray();
+      const result = await collection
+        .find(geoQuery)
+        .limit(5)
+        .toArray();
 
-    if (result.length > 0) {
-      res.json(result);
+      if (result.length > 0) {
+        res.json(result);
+      } else {
+        res.status(404).json({ message: "No recycling centers found nearby" });
+      }
     } else {
-      res.status(404).json({ message: "No opening hours found for the given days" });
+      // 綜合查詢
+      if (location) {
+        query.$or = [
+          { "addressComponents.longText": location },
+          { "addressComponents.longText": { $regex: `${location}\\(` } },
+        ];
+      }
+
+      if (weekdays) {
+        const dayNumbers = weekdays
+          .split(",")
+          .map((day) => parseInt(day))
+          .filter((day) => !isNaN(day) && day >= 0 && day <= 6);
+
+        if (dayNumbers.length === 0) {
+          return res.status(400).json({ message: "Invalid days parameter" });
+        }
+
+        query["regularOpeningHours.periods"] = {
+          $elemMatch: {
+            "open.day": { $in: dayNumbers },
+            "close.day": { $in: dayNumbers },
+          },
+        };
+      }
+
+      if (categories) {
+        const categoriesArray = categories.split(",");
+        query.category = { $in: categoriesArray };
+      }
+
+      const result = await collection.find(query).toArray();
+
+      if (result.length > 0) {
+        res.json(result);
+      } else {
+        res.status(404).json({ message: "No matching data found" });
+      }
     }
   } catch (error) {
     console.error(error);
@@ -134,13 +193,108 @@ app.get("/api/opening-weekday", async (req, res) => {
 });
 
 
+// app.get(
+//   "/api/nearby-recycling-centers/:latitude/:longitude",
+//   async (req, res) => {
+//     const client = new MongoClient(uri);
+
+//     try {
+//       await client.connect();
+//       const database = client.db("recycle");
+//       const collection = database.collection("place_detail2");
+
+//       const { latitude, longitude } = req.params;
+//       const userLocation = {
+//         latitude: parseFloat(latitude),
+//         longitude: parseFloat(longitude),
+//       };
+
+//       console.log(userLocation);
+//       const result = await collection
+//         .find({
+//           locationGeoJson: {
+//             $near: {
+//               $geometry: {
+//                 type: "Point",
+//                 coordinates: [userLocation.longitude, userLocation.latitude],
+//               },
+//             },
+//           },
+//         })
+//         .limit(5)
+//         .toArray();
+
+//       if (result.length > 0) {
+//         res.json(result);
+//       } else {
+//         res.status(404).json({ message: "No recycling centers found nearby" });
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ message: "Internal Server Error" });
+//     } finally {
+//       await client.close();
+//     }
+//   }
+// );
+
+app.get("/api/opening-weekday", async (req, res) => {
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+    const database = client.db("recycle");
+    const collection = database.collection("place_detail2");
+
+    const { days } = req.query;
+
+    if (!days) {
+      return res.status(400).json({ message: "Days parameter is required" });
+    }
+
+    const dayNumbers = days
+      .split(",")
+      .map((day) => parseInt(day))
+      .filter((day) => !isNaN(day) && day >= 0 && day <= 6);
+
+    console.log(dayNumbers);
+    if (dayNumbers.length === 0) {
+      return res.status(400).json({ message: "Invalid days parameter" });
+    }
+
+    const query = {
+      "regularOpeningHours.periods": {
+        $elemMatch: {
+          "open.day": { $in: dayNumbers },
+          "close.day": { $in: dayNumbers },
+        },
+      },
+    };
+
+    const result = await collection.find(query).toArray();
+
+    if (result.length > 0) {
+      res.json(result);
+    } else {
+      res
+        .status(404)
+        .json({ message: "No opening hours found for the given days" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  } finally {
+    await client.close();
+  }
+});
+
 // app.get("/api/opening-weekday/:day", async (req, res) => {
 //   const client = new MongoClient(uri);
 
 //   try {
 //     await client.connect();
 //     const database = client.db("recycle");
-//     const collection = database.collection("place_detail");
+//     const collection = database.collection("place_detail2");
 
 //     const { day } = req.params;
 //     const dayNumber = parseInt(day);
@@ -179,39 +333,43 @@ app.get("/api/search", async (req, res) => {
   try {
     await client.connect();
     const database = client.db("recycle");
-    const collection = database.collection("place_detail");
+    const collection = database.collection("place_detail2");
 
-    const { location, weekdays ,categories } = req.query;
+    const { location, weekdays, categories } = req.query;
 
     const query = {};
 
     if (location) {
       query.$or = [
         { "addressComponents.longText": location },
-        { "addressComponents.longText": { $regex: `${location}\\(` } }
+        { "addressComponents.longText": { $regex: `${location}\\(` } },
       ];
     }
 
     if (weekdays) {
-      const dayNumbers = weekdays.split(',').map(day => parseInt(day)).filter(day => !isNaN(day) && day >= 0 && day <= 6);
+      const dayNumbers = weekdays
+        .split(",")
+        .map((day) => parseInt(day))
+        .filter((day) => !isNaN(day) && day >= 0 && day <= 6);
 
       if (dayNumbers.length === 0) {
         return res.status(400).json({ message: "Invalid days parameter" });
       }
 
-      query['regularOpeningHours.periods'] = {
+      query["regularOpeningHours.periods"] = {
         $elemMatch: {
-          'open.day': { $in: dayNumbers },
-          'close.day': { $in: dayNumbers }
-        }
+          "open.day": { $in: dayNumbers },
+          "close.day": { $in: dayNumbers },
+        },
       };
     }
 
     if (categories) {
-      const categoriesArray = categories.split(',');
+      const categoriesArray = categories.split(",");
       query.category = { $in: categoriesArray };
     }
 
+    console.log(query);
 
     const result = await collection.find(query).toArray();
 
@@ -234,7 +392,7 @@ app.get("/api/search", async (req, res) => {
 //   try {
 //     await client.connect();
 //     const database = client.db("recycle");
-//     const collection = database.collection("place_detail");
+//     const collection = database.collection("place_detail2");
 
 //     const { location, weekday } = req.query;
 
@@ -275,19 +433,13 @@ app.get("/api/search", async (req, res) => {
 //   }
 // });
 
-
-
-
-
-
-
 app.get("/api/categories/:categories", async (req, res) => {
   const client = new MongoClient(uri);
 
   try {
     await client.connect();
     const database = client.db("recycle");
-    const collection = database.collection("place_detail");
+    const collection = database.collection("place_detail2");
 
     const { categories } = req.params;
     const categoriesArray = categories.split(",");
@@ -312,8 +464,6 @@ app.get("/api/categories/:categories", async (req, res) => {
     await client.close();
   }
 });
-
-
 
 app.post("/getClassify", upload.single("image"), async (req, res) => {
   try {

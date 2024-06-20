@@ -81,7 +81,11 @@ async function processRecycleData(recycle_data) {
 
     // console.log(new_p.factoryname);
     const google_place_detail = await getPlaceDetails(new_p.factoryname);
+
+    console.log(google_place_detail);
+
     const mergedDATA = { ...new_p, ...google_place_detail };
+
     new_recycle_data_array.push(mergedDATA);
   }
 
@@ -178,16 +182,24 @@ const new_recycle_data_array2 = processRecycleData(recycle_data);
 
 function getPlaceDetails(placeName) {
   return new Promise((resolve, reject) => {
+    // 搜索地点
     const data = {
       textQuery: placeName,
       languageCode: "zh-TW",
     };
+
     axios
       .post(`https://places.googleapis.com/v1/places:searchText`, data, config)
       .then((response) => {
+        // 返回第一个地点的详细信息
+        // console.log(response.data.places[0].displayName);
+
+        console.log(response.data);
+
         resolve(response.data.places[0]);
       })
       .catch((error) => {
+        // 捕获并输出错误
         console.error("Error:", error);
         reject({ error: "google data error" });
       });
@@ -249,32 +261,32 @@ function getPlaceDetails(placeName) {
 //     }
 // }
 
-async function saveToMongoDB(details) {
-    try {
-        const database = client.db(DATABASE_NAME);
-        const collection = database.collection(COLLECTION_NAME);
-        await collection.insertOne(details);
-        console.log(`Saved details for ${details.name} to MongoDB`);
-    } catch (error) {
-        console.error('Error saving to MongoDB:', error);
-    }
-}
+// async function saveToMongoDB(details) {
+//     try {
+//         const database = client.db(DATABASE_NAME);
+//         const collection = database.collection(COLLECTION_NAME);
+//         await collection.insertOne(details);
+//         console.log(`Saved details for ${details.name} to MongoDB`);
+//     } catch (error) {
+//         console.error('Error saving to MongoDB:', error);
+//     }
+// }
 
-async function main() {
-    try {
-        await client.connect();
-        console.log('Connected to MongoDB');
+// async function main() {
+//     try {
+//         await client.connect();
+//         console.log('Connected to MongoDB');
 
-        for (const name of recyclePlantNames) {
-            const details = await getPlaceDetails(name);
-            if (details) {
-                await saveToMongoDB(details);
-            }
-        }
-    } finally {
-        await client.close();
-        console.log('Disconnected from MongoDB');
-    }
-}
+//         for (const name of recyclePlantNames) {
+//             const details = await getPlaceDetails(name);
+//             if (details) {
+//                 await saveToMongoDB(details);
+//             }
+//         }
+//     } finally {
+//         await client.close();
+//         console.log('Disconnected from MongoDB');
+//     }
+// }
 
 // main().catch(console.error);
